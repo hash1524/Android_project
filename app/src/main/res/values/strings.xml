@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">TrackAct</string>
+    <string name="register">REGISTER</string>
+    <string name="trackact">TrackAct</string>
+    <string name="intro">\n Need to remember to pick up some\n groceries? \n\n Need to finish a TO-DO? \n\n Want to set a reminder for a meeting? \n\n Want to share your shopping list with your\n friends and family? \n\n Enjoy your day while we do these for you.</string>
+    <string name="welcome_to_trackact">Welcome to TrackAct</string>
+    <string name="HomeName">TrackAct</string>
+    <string name="login">LOGIN</string>
+    <string name="user_name">User Name (Example: Sriharsha Amam)</string>
+    <string name="user_name1">User Name</string>
+    <string name="password">Password</string>
+    <string name="repassword">ReType Password</string>
+    <string name="mail">Email (Example: abc@gmail.com)</string>
+    <string name="phone">Phone Number</string>
+    <string name="profession">Profession</string>
+    <string name="generateOTP">GENERATE OTP</string>
+    <string name="phone_no_verification">Phone No. Verification</string>
+    <string name="cross">X</string>
+    <string name="code">CO\nDE</string>
+    <string name="verification">VERIFICATION</string>
+    <string name="verify">Verify</string>
+    <string name="todo">TODO</string>
+    <string name="hello_world">Hello World</string>
+
+</resources>

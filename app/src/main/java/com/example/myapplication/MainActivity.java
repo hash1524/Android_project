@@ -22,14 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_bar_layout);
-
-        Login=(Button) findViewById(R.id.buttonLogin);
+        Register =findViewById(R.id.buttonRegister);
+        Login=findViewById(R.id.buttonLogin);
         Login.setOnClickListener((v -> {
             Intent ToLoginPage=new Intent(MainActivity.this, LoginPage.class);
             startActivity(ToLoginPage);
         }));
 
-        Register = (Button) findViewById(R.id.buttonRegister);
+
         Register.setOnClickListener((v -> {
             Intent ToRegisterPage=new Intent(MainActivity.this,RegisterPage.class);
             startActivity(ToRegisterPage);

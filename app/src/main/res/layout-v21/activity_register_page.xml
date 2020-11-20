@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg1"
     tools:context="com.example.myapplication.RegisterPage">
-
+    <ImageView
+        android:id="@+id/image4"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/sms"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/todo" />
     <TextView
         android:id="@+id/headingOTP"
         android:layout_width="match_parent"
@@ -15,49 +23,28 @@
         android:textSize="35sp"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/image4"
+        android:layout_marginTop="10dp"
         android:gravity="center"/>
-
-
-
-    <EditText
-        android:id="@+id/mailid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/mail"
-        android:textColorHint="#83FFFFFF"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_below="@+id/headingOTP"
-        android:importantForAutofill="no"
-         />
-
     <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/phone"
         android:textColorHint="#83FFFFFF"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_below="@+id/mailid"
+        android:layout_below="@+id/headingOTP"
         android:importantForAutofill="no"
         />
-
-
-
-
-
-
     <ProgressBar
-        android:id="@+id/progressbar"
+        android:id="@+id/progressbar1"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@+id/phone"
         android:visibility="gone"
         />
@@ -66,11 +53,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/phone"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:text="@string/generateOTP"
         android:backgroundTint="@color/shadowfight2"
         android:layout_centerHorizontal="true"/>
-
-
-
+    <TextView
+        android:id="@+id/verification"
+        android:textStyle="bold"
+        android:layout_below="@+id/generateOTP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/verification"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
+    <com.chaos.view.PinView
+        android:id="@+id/PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:itemBackground="@android:color/darker_gray"
+        app:itemCount="6"
+        app:itemHeight="50dp"
+        app:itemWidth="50dp"
+        app:lineColor="@color/white"
+        style="@style/PinWidget.PinView"
+        android:inputType="number"
+        android:cursorVisible="true"
+        app:cursorColor="@color/white"
+        android:layout_below="@+id/verification"
+        />
+    <Button
+        android:id="@+id/Verify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/verify"
+        android:backgroundTint="@color/shadowfight2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/PinView"
+        android:layout_marginTop="10dp"
+        />
+    <ProgressBar
+        android:id="@+id/progressbar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/PinView"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        />
 </RelativeLayout>

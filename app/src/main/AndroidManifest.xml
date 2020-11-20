@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".SetAccountPage"></activity>
-        <activity android:name=".VerificationPage" />
+        <activity android:name=".Dashboard"></activity>
         <activity android:name=".LoginPage" />
+        <activity android:name=".SetAccountPage" />
         <activity android:name=".RegisterPage" />
         <activity android:name=".ActivityHome">
             <intent-filter>

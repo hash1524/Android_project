@@ -5,14 +5,62 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg1"
     tools:context=".LoginPage">
-
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hello world"
-        android:textColor="@color/white"
-        android:textSize="50dp"
+        android:id="@+id/navigate"
+        android:layout_width="240dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:text="NAVIGATE"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="50dp"
+        />
+    <ImageView
+        android:src="@drawable/navigate"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toLeftOf="@+id/navigate"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="40dp"
+        />
+    <ImageView
+        android:src="@drawable/navigate"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/navigate"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="40dp"
+        />
+
+    <ImageButton
+        android:id="@+id/todo"
+        android:src="@drawable/todof"
+        android:layout_below="@+id/navigate"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        />
+    <ImageButton
+        android:id="@+id/shop"
+        android:src="@drawable/shop"
+        android:layout_below="@+id/navigate"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        />
+    <ImageButton
+        android:id="@+id/track"
+        android:src="@drawable/track"
+        android:layout_width="340dp"
+        android:layout_height="170dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
+        android:layout_centerHorizontal="true"
+        />
+
 
 </RelativeLayout >

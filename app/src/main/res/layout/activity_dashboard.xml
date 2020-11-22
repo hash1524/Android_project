@@ -48,6 +48,8 @@
         android:layout_below="@+id/navigate"
         android:layout_width="170dp"
         android:layout_height="170dp"
+        android:layout_toRightOf="@+id/todo"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"
         android:layout_alignParentRight="true"

@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="shadowfight">#14709A</color>
     <color name="shadowfight2">#FFCD9137</color>
-    <color name="waste">#FFFFFF</color>
+    <color name="texthint">#979494</color>
+
 </resources>

@@ -22,7 +22,7 @@ public class Dashboard extends AppCompatActivity {
         shop=findViewById(R.id.shop);
         tracker=findViewById(R.id.track);
         todo.setOnClickListener(v -> {
-            Intent intent_todo=new Intent(Dashboard.this,Todo.class);
+            Intent intent_todo=new Intent(Dashboard.this,TodoEvent.class);
             startActivity(intent_todo);
         });
         shop.setOnClickListener(v -> {

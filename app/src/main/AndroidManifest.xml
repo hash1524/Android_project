@@ -49,6 +49,9 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
+        <receiver android:name=".RemainderBroadCast"
+            android:exported="true"
+            android:enabled="true"/>
     </application>
 
 </manifest>

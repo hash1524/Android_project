@@ -2,8 +2,13 @@ package com.example.myapplication;
 
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -19,7 +24,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 public class todoeventadder extends AppCompatActivity  {
@@ -31,6 +39,7 @@ public class todoeventadder extends AppCompatActivity  {
     EditText setDate;
     CalendarView mcalender;
     TimePickerDialog timePickerDialog;
+    String monthstring,daystring,minstring,hourstring,yearstring;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +64,10 @@ public class todoeventadder extends AppCompatActivity  {
             String date = dayOfMonth + "/" + month + "/" + year;
             Log.d(TAG, "onSelectedDayChange: dd/mm/yyyy: " + date);
             setDate.setText(date);
+            yearstring= "" + year;
+            monthstring= ""+month;
+            daystring = "" + dayOfMonth;
+
         });
         set_time.setOnClickListener(v -> {
             final Calendar calender = Calendar.getInstance();
@@ -63,12 +76,34 @@ public class todoeventadder extends AppCompatActivity  {
             timePickerDialog = new TimePickerDialog(todoeventadder.this,
                     (tp, sHour, sMinute) -> settime.setText(sHour + ":" + sMinute), hours, minute, true);
             timePickerDialog.show();
+            minstring = "" + minute;
+            hourstring = "" + hours;
         });
         add_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MyDatabaseHelper myDB=new MyDatabaseHelper(todoeventadder.this);
                 myDB.addEvent(eventName.getText().toString().trim(),setDate.getText().toString().trim(),settime.getText().toString().trim());
+                SimpleDateFormat dateFormat = new SimpleDateFormat(
+                        "yyyy-MM-dd HH:mm:ss");
+                String inputTime = yearstring + "-" + monthstring + "-" + daystring + " " + hourstring + ":" + minstring + ":" + 0;
+                long diff = 0;
+                try {
+                    Date oldDate = dateFormat.parse(inputTime);
+                    Date currentdate = new Date();
+                    diff = oldDate.getTime() - currentdate.getTime();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                createNotificationChannel();
+
+                Intent intent = new Intent(todoeventadder.this, RemainderBroadCast.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(todoeventadder.this, 0, intent, 0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                long timeAtButtonClick = System.currentTimeMillis();
+                long tenSecondsInMillis = diff;
+                alarmManager.set(AlarmManager.RTC_WAKEUP,
+                        timeAtButtonClick + diff, pendingIntent);
             }
         });
     }
@@ -83,5 +118,17 @@ public class todoeventadder extends AppCompatActivity  {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
+    }
+    private void createNotificationChannel()
+    {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "LemubitRemainderChannel";
+            String description = "channel for lemubit remainder";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("notifylemubit",name,importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }

@@ -7,16 +7,15 @@
     android:background="@drawable/bg1"
     tools:context="com.example.myapplication.MainActivity" >
 
-<Button
+    <Button
         android:id="@+id/buttonRegister"
         android:layout_width="170dp"
         android:layout_height="60dp"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="-276dp"
         android:text="@string/register"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:layout_below="@+id/textView2"
-    android:layout_marginTop="10dp"
         app:backgroundTint="@color/shadowfight2" />
 
     <Button

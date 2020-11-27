@@ -7,10 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,10 +64,24 @@ public class todoeventadder extends AppCompatActivity  {
                     (tp, sHour, sMinute) -> settime.setText(sHour + ":" + sMinute), hours, minute, true);
             timePickerDialog.show();
         });
-        add_event.setOnClickListener(v -> {
-
-            Intent i1 = new Intent(todoeventadder.this, TodoEvent.class);
-            startActivity(i1);
+        add_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyDatabaseHelper myDB=new MyDatabaseHelper(todoeventadder.this);
+                myDB.addEvent(eventName.getText().toString().trim(),setDate.getText().toString().trim(),settime.getText().toString().trim());
+            }
         });
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == android.R.id.home) {
+            Intent i2=new Intent(getApplicationContext(),TodoEvent.class);
+            startActivity(i2);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }

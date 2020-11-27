@@ -3,8 +3,8 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity android:name=".toshopadder"></activity>
         <activity
             android:name=".TodoEvent"
             android:screenOrientation="portrait" />
@@ -49,9 +50,11 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
-        <receiver android:name=".RemainderBroadCast"
-            android:exported="true"
-            android:enabled="true"/>
+
+        <receiver
+            android:name=".RemainderBroadCast"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

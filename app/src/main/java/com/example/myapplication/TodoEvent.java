@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -69,7 +69,8 @@ public class  TodoEvent extends AppCompatActivity {
     }
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == android.R.id.home) {
-            finish();
+            Intent intent=new Intent(getApplicationContext(),Dashboard.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

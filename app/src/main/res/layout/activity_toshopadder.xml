@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    tools:context=".toshopadder">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Item Name"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColorHint="@color/texthint"
+        android:textColor="#FFFFFF"
+        android:id="@+id/item_name_adder"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_name_adder"
+        android:layout_marginTop="40dp"
+        android:hint="Quantity"
+        android:textColorHint="@color/texthint"
+        android:textColor="#FFFFFF"
+        android:id="@+id/item_quantity_adder"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="ADD ITEM"
+        android:id="@+id/shop_add_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/item_quantity_adder"
+        android:textStyle="bold"
+        android:backgroundTint="@color/shadowfight2"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/shop"
+        android:layout_above="@+id/item_name_adder"
+        android:layout_marginBottom="20dp"
+        android:padding="40dp"
+        />
+
+</RelativeLayout>

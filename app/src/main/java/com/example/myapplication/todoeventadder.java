@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -29,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.TimeZone;
 
 public class todoeventadder extends AppCompatActivity  {
     private static final String TAG = "todoeventadder";
@@ -61,23 +63,59 @@ public class todoeventadder extends AppCompatActivity  {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         mcalender.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            String date = dayOfMonth + "/" + month + "/" + year;
+            yearstring= "" + year;
+            if((month+1)<10){
+                monthstring="0"+(month+1);
+            }
+            else{
+                monthstring=""+(month+1);
+            }
+            if((dayOfMonth)<10){
+                daystring="0"+dayOfMonth;
+            }
+            else{
+                daystring = "" + dayOfMonth;
+            }
+            String date = daystring + "/" + (monthstring) + "/" + year;
             Log.d(TAG, "onSelectedDayChange: dd/mm/yyyy: " + date);
             setDate.setText(date);
-            yearstring= "" + year;
-            monthstring= ""+month;
-            daystring = "" + dayOfMonth;
-
         });
-        set_time.setOnClickListener(v -> {
-            final Calendar calender = Calendar.getInstance();
-            int hours = calender.get(Calendar.HOUR_OF_DAY);
-            int minute = calender.get(Calendar.MINUTE);
-            timePickerDialog = new TimePickerDialog(todoeventadder.this,
-                    (tp, sHour, sMinute) -> settime.setText(sHour + ":" + sMinute), hours, minute, true);
-            timePickerDialog.show();
-            minstring = "" + minute;
-            hourstring = "" + hours;
+        set_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calender = Calendar.getInstance();
+                int hours = calender.get(calender.HOUR_OF_DAY);
+                int minute = calender.get(calender.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(todoeventadder.this, R.style.Theme_AppCompat_Dialog, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        Calendar  c = Calendar.getInstance();
+                        c.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                        c.set(Calendar.MINUTE,minute);
+                        c.setTimeZone(TimeZone.getDefault());
+                        SimpleDateFormat format = new SimpleDateFormat("k:mm a");
+                        String time = format.format(c.getTime());
+                        if(hourOfDay < 10)
+                        {
+                            hourstring = "0"+hourOfDay;
+                        }
+                        else
+                        {
+                            hourstring = ""+hourOfDay;
+                        }
+                        if(minute < 10)
+                        {
+                            minstring = "0" + minute;
+                        }
+                        else {
+                            minstring = "" + minute;
+                        }
+                        settime.setText(time);
+                    }
+                },hours,minute,false);
+                timePickerDialog.show();
+            }
         });
         add_event.setOnClickListener(new View.OnClickListener() {
             @Override

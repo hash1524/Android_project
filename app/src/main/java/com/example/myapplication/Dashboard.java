@@ -30,7 +30,7 @@ public class Dashboard extends AppCompatActivity {
             startActivity(intent_shop);
         });
         tracker.setOnClickListener(v -> {
-            Intent intent_track=new Intent(Dashboard.this,Tracker.class);
+            Intent intent_track=new Intent(Dashboard.this,cart.class);
             startActivity(intent_track);
         });
     }

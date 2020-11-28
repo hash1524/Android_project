@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">TrackAct</string>
+
+    <string name="workphone">Work</string>
+
+    <string name="homephone">Home</string>
+
+    <string name="personalphone">Personal</string>
+
+
     <string name="register">REGISTER</string>
     <string name="trackact">TrackAct</string>
     <string name="intro">\n Need to remember to pick up some\n groceries? \n\n Need to finish a TO-DO? \n\n Want to set a reminder for a meeting? \n\n Want to share your shopping list with your\n friends and family? \n\n Enjoy your day while we do these for you.</string>
@@ -18,8 +26,7 @@
     <string name="cross">X</string>
     <string name="code">CO\nDE</string>
     <string name="verification">VERIFICATION</string>
-    <string name="select_image">Select image</string>
-    <string name="intent_type">image/*</string>
+
     <string name="verify">Verify</string>
     <string name="todo">TODO</string>
     <string name="hello_world">Hello World</string>

@@ -142,6 +142,8 @@ public class todoeventadder extends AppCompatActivity  {
                 long tenSecondsInMillis = diff;
                 alarmManager.set(AlarmManager.RTC_WAKEUP,
                         timeAtButtonClick + diff, pendingIntent);
+                Intent i=new Intent(getApplicationContext(),TodoEvent.class);
+                startActivity(i);
             }
         });
     }

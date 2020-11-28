@@ -10,5 +10,7 @@
     <color name="shadowfight">#14709A</color>
     <color name="shadowfight2">#FFCD9137</color>
     <color name="texthint">#979494</color>
-
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
 </resources>

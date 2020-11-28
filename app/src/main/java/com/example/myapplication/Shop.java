@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Shop extends AppCompatActivity {
-    FloatingActionButton add_button_shop;
+    FloatingActionButton add_button_shop,share;
     RecyclerView recyclerView_shop;
     MyDatabaseHelperShop myDB_shop;
     ArrayList<String> item_id,item_title,item_quantity;
@@ -34,6 +35,7 @@ public class Shop extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         recyclerView_shop=findViewById(R.id.recyclerView_shop);
+        share=findViewById(R.id.share);
         add_button_shop=findViewById(R.id.add_button_shop);
         add_button_shop.setOnClickListener(v -> {
             Intent intent=new Intent(getApplicationContext(),toshopadder.class);
@@ -48,7 +50,25 @@ public class Shop extends AppCompatActivity {
         customAdapter_shop=new CustomAdapterShop(Shop.this,item_id,item_title,item_quantity);
         recyclerView_shop.setAdapter(customAdapter_shop);
         recyclerView_shop.setLayoutManager(new LinearLayoutManager(Shop.this));
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder fullString=new StringBuilder();
+                for(int i=0;i<item_id.size();i++){
+                    String ItemName=item_title.get(i);
+                    String ItemQuantity=item_quantity.get(i);
+                    fullString.append("Product : "+ItemName+"\n"+"Quantity : "+ItemQuantity+"\n");
+                }
+                Intent sendIntent=new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT,fullString.toString());
+                sendIntent.setType("text/plain");
+                sendIntent.setPackage("com.whatsapp");
+                startActivity(sendIntent);
+            }
+        });
     }
+
     void storeDataInArrays(){
         Cursor cursor=myDB_shop.readAllData();
         if(cursor.getCount()==0){

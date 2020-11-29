@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,21 +8,17 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.View;
+
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.sql.Blob;
-import java.util.Set;
+import java.util.Objects;
+
 
 public class ItemAdder extends AppCompatActivity {
     Button AddImage;
@@ -29,16 +26,22 @@ public class ItemAdder extends AppCompatActivity {
     ImageView ProductImage;
     EditText ProductName;
     EditText ProductQuantity;
-    ImageView image;
+
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_adder);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.action_bar_layout);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         AddImage = findViewById(R.id.AddPhoto);
         SetItem = findViewById(R.id.SetItem);
-        image=findViewById(R.id.track_image_txt);
+
         ProductImage = findViewById(R.id.ProductImage);
         ProductName = findViewById(R.id.ProductName);
         ProductQuantity = findViewById(R.id.ProductQuantity);
@@ -71,5 +74,16 @@ public class ItemAdder extends AppCompatActivity {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
         byte[] bArray = bos.toByteArray();
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent=new Intent(getApplicationContext(),Shop.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
     }
 }

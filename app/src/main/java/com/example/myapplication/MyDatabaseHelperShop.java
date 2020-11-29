@@ -17,7 +17,7 @@ public class MyDatabaseHelperShop extends SQLiteOpenHelper {
     private static final String COLUMN_ID="_id";
     private static final String COLUMN_NAME="item_name";
     private static final String COLUMN_QUANTITY="item_quantity";
-    public MyDatabaseHelperShop(@Nullable Context context) {
+    MyDatabaseHelperShop(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context=context;
     }
@@ -59,4 +59,28 @@ public class MyDatabaseHelperShop extends SQLiteOpenHelper {
         }
         return cursor;
     }
+    void updateData(String row_id,String title,String quantity){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues cv=new ContentValues();
+        cv.put(COLUMN_NAME,title);
+        cv.put(COLUMN_QUANTITY,quantity);
+        long result=db.update(TABLE_NAME,cv,"_id=?",new String[]{row_id});
+        if(result==-1){
+            Toast.makeText(context,"Failed to update!",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context,"Successfully updated",Toast.LENGTH_SHORT).show();
+        }
+    }
+    void deleteOneRow(String row_id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        long result=db.delete(TABLE_NAME,"_id=?",new String[]{row_id});
+        if(result==-1){
+            Toast.makeText(context,"Cannot be deleted",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context,"Deleted Successfully",Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

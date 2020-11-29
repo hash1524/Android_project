@@ -13,8 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".ItemAdder"></activity>
-        <activity android:name=".cart" />
+        <activity android:name=".UpdateShop"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ItemAdder"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".cart"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".toshopadder"
             android:screenOrientation="portrait" />
@@ -23,9 +27,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".todoeventadder"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Tracker"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Shop"

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    tools:context=".UpdateShop">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Changed Item Name"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColorHint="@color/texthint"
+        android:textColor="#FFFFFF"
+        android:id="@+id/item_name_adder_2"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_name_adder_2"
+        android:layout_marginTop="40dp"
+        android:hint="Changed Quantity"
+        android:textColorHint="@color/texthint"
+        android:textColor="#FFFFFF"
+        android:id="@+id/item_quantity_adder_2"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="UPDATE ITEM"
+        android:id="@+id/shop_add_button_2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/item_quantity_adder_2"
+        android:textStyle="bold"
+        android:backgroundTint="@color/shadowfight2"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="DELETE ITEM"
+        android:id="@+id/shop_delete_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/shop_add_button_2"
+        android:textStyle="bold"
+        android:backgroundTint="@color/shadowfight2"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/shop"
+        android:layout_above="@+id/item_name_adder_2"
+        android:layout_marginBottom="20dp"
+        android:padding="40dp"
+        />
+
+</RelativeLayout>

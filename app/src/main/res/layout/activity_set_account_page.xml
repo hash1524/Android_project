@@ -13,6 +13,18 @@
         android:layout_height="200dp"
         android:src="@drawable/info1" />
     <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profession"
+        android:hint="Profession"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/texthint"
+        android:layout_below="@id/email"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        />
+    <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="UserName"
-        android:layout_below="@+id/email"
+        android:layout_below="@+id/profession"
         android:textColorHint="#83FFFFFF"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"

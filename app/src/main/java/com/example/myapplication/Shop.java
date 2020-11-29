@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,27 +48,27 @@ public class Shop extends AppCompatActivity {
         item_quantity=new ArrayList<>();
         storeDataInArrays();
 
-        customAdapter_shop=new CustomAdapterShop(Shop.this,item_id,item_title,item_quantity);
+        customAdapter_shop=new CustomAdapterShop(Shop.this,this,item_id,item_title,item_quantity);
         recyclerView_shop.setAdapter(customAdapter_shop);
         recyclerView_shop.setLayoutManager(new LinearLayoutManager(Shop.this));
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StringBuilder fullString=new StringBuilder();
-                for(int i=0;i<item_id.size();i++){
-                    String ItemName=item_title.get(i);
-                    String ItemQuantity=item_quantity.get(i);
-                    fullString.append("Product : "+ItemName+"\n"+"Quantity : "+ItemQuantity+"\n");
-                }
-                Intent sendIntent=new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT,fullString.toString());
-                sendIntent.setType("text/plain");
-                sendIntent.setPackage("com.whatsapp");
-                startActivity(sendIntent);
+
+        share.setOnClickListener(v -> {
+            StringBuilder fullString=new StringBuilder();
+            for(int i=0;i<item_id.size();i++){
+                String ItemName=item_title.get(i);
+                String ItemQuantity=item_quantity.get(i);
+                fullString.append("Product : "+ItemName+"\n"+"Quantity : "+ItemQuantity+"\n");
             }
+            Intent sendIntent=new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT,fullString.toString());
+            sendIntent.setType("text/plain");
+            sendIntent.setPackage("com.whatsapp");
+            startActivity(sendIntent);
         });
     }
+
+
 
     void storeDataInArrays(){
         Cursor cursor=myDB_shop.readAllData();
@@ -80,6 +81,13 @@ public class Shop extends AppCompatActivity {
                 item_title.add(cursor.getString(1));
                 item_quantity.add(cursor.getString(2));
             }
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1){
+            recreate();
         }
     }
     public boolean onOptionsItemSelected(MenuItem item){
